@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(24.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                          padding: EdgeInsets.fromLTRB(30, 6, 30, 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
