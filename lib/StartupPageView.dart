@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:exploro/loginPage.dart';
 import 'page_route.dart';
 
+
 class StartupPageView extends StatefulWidget {
   const StartupPageView({Key? key}) : super(key: key);
 

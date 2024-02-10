@@ -106,7 +106,7 @@ class _ExploroTextBoxState extends State<ExploroTextBox> {
                           },
                           child: Container(
                               padding: const EdgeInsets.all(5),
-                              child: Icon(!showPassword ? Icons.remove_red_eye : Icons.password)))))
+                              child: Icon(!showPassword ? Icons.remove_red_eye_outlined : Icons.password)))))
                   : Container()
             ]),
           )),
