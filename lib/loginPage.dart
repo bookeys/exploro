@@ -1,9 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:exploro/placeSelectionPage.dart';
 import 'package:exploro/registerPage.dart';
 import 'package:exploro/ui_components/input_fields.dart';
+import 'package:exploro/ui_components/stateSelection.dart';
 import 'package:exploro/validation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'exceptions.dart';
+import 'homePage.dart';
+import 'imageSelectionPage.dart';
+import 'main.dart';
 import 'page_route.dart';
 
 class LoginModel{
@@ -30,19 +36,66 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> loginUser(String email, String password) async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+       userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      User? user = userCredential.user;
+      User? user = userCredential?.user;
       if (user != null && user.emailVerified) {
+        DocumentSnapshot userData = await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential?.user?.uid)
+            .get();
+        // Check if the user has selectedPlaces
+        Map<String, dynamic>? userDataMap = userData.data() as Map<String, dynamic>?;
+        bool hasSelectedPlaces = userData.exists && userDataMap != null && userDataMap['selectedPlaces'] != null;
+        bool hasSelectedState = userData.exists && userDataMap != null && userDataMap['selectedState'] != null;
+        bool hasUploadedImage = userData.exists && userDataMap != null && userDataMap['imageUrl'] != null;
+
+        if(hasSelectedPlaces && hasSelectedState && hasUploadedImage){
+          Navigator.of(context).pushReplacement(
+            HorizontalSlideRoute(
+              builder: (_, __, ___) {
+                return HomePage();
+              },
+            ),
+          );
+        }else if(hasSelectedPlaces && hasSelectedState){
+          Navigator.of(context).pushReplacement(
+            HorizontalSlideRoute(
+              builder: (_, __, ___) {
+                return  ImageUploadPage();
+              },
+            ),
+          );
+
+        }else if(hasSelectedPlaces){
+          Navigator.of(context).pushReplacement(
+            HorizontalSlideRoute(
+              builder: (_, __, ___) {
+                return const StateSelection();
+              },
+            ),
+          );
+        }else{
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Sucessfully Logged in')));
+          Navigator.of(context).pushReplacement(
+            HorizontalSlideRoute(
+              builder: (_, __, ___) {
+                return const PlaceSelectionPage();
+              },
+            ),
+          );
+        }
+
         print('User logged in successfully! User ID: ${user.uid}');
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Sucessfully Logged in')));
       } else {
         print('User email is not verified. Please verify your email.');
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('User email is not verified. Please verify your email.')));
+            const SnackBar(content: Text('User email is not verified. Please verify your email.', style: TextStyle(
+              fontFamily: "ColaRegular"
+            ),)));
       }
 
     } catch (e) {
@@ -67,20 +120,16 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 140,
                 ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Image.asset("images/exploro.png", height: 50,),
-                ),
+                 Image.asset("images/exploro.png", height: 60,),
+
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  "EXPLORO",
+                  "exploro",
                   style: TextStyle(
                       color: Colors.black,
-                      fontFamily: "ColabBold",
+                      fontFamily: "ColabMedium",
                       fontSize: 35),
                 ),
                 const SizedBox(
@@ -213,7 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                                             child: !loginClicked
                                                 ? const Text(
                                               "Login",
-                                              style: TextStyle(fontFamily: "GilroyMedium"),
+                                              style: TextStyle(fontFamily: "ColabBold",color: Colors.black),
                                             )
                                                 : const SizedBox(
                                                 height: 23,

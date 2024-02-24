@@ -82,7 +82,7 @@ class _StartupPageViewState extends State<StartupPageView> {
                   child: ElevatedButton(
                     onPressed: () {
                       activePage == 2
-                          ? Navigator.of(context).push(
+                          ? Navigator.of(context).pushReplacement(
                               HorizontalSlideRoute(
                                 builder: (_, __, ___) {
                                   return const LoginPage();
