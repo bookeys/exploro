@@ -79,22 +79,7 @@ class _PlaceSelectionPageState extends State<PlaceSelectionPage> with TickerProv
 
 
 
-  Future<void> logoutUser() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      Navigator.of(context).pushReplacement(
-        HorizontalSlideRoute(
-          builder: (_, __, ___) {
-            return const LoginPage();
-          },
-        ),
-      );
-      print('User logged out successfully!');
-    } catch (e) {
-      print('Error logging out user: $e');
-      // Handle the error, display a message to the user, etc.
-    }
-  }
+
 
   @override
   void initState() {
@@ -127,9 +112,7 @@ class _PlaceSelectionPageState extends State<PlaceSelectionPage> with TickerProv
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Tell us your preferences", style: TextStyle(fontFamily: "ColabRegular", fontSize: 20),),
-                    IconButton(onPressed: (){
-                      logoutUser();
-                    }, icon: Icon(Icons.logout))
+
                   ],
                 ),
                 const SizedBox(
