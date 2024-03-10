@@ -64,7 +64,6 @@ class _RegisterPageState extends State<RegisterPage> {
         'phoneno': phone,
       });
 
-      await userCredential.user!.sendEmailVerification();
 
       print('User registered successfully!');
     } catch (e) {

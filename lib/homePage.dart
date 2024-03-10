@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:exploro/main.dart';
+import 'package:exploro/myProfile.dart';
 import 'package:exploro/page_route.dart';
 import 'package:exploro/userDetailsPage.dart';
 import 'package:flutter/material.dart';
@@ -94,24 +95,23 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-  void _openWhatsApp(String phoneNumber) async{
-    String phone = '+91$phoneNumber';
-    var whatsappUrl_android = 'whatsapp://send?phone='+phone+"&text=I found you through exploro and i found that our intrest are same, so can we plan a trip together";
-    var whatsappUrl_ios = 'https://wa.me/phone?text=${Uri.parse("I found you through exploro and i found that our intrest are same, so can we plan a trip together")}';
-    if(Platform.isAndroid){
-      if(await canLaunchUrl(Uri.parse(whatsappUrl_android))){
-        await launchUrl(Uri.parse(whatsappUrl_android));
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: new Text("Unable to launch whatsapp")));
-      }
-    }else{
-      if(await canLaunchUrl(Uri.parse(whatsappUrl_ios))){
-        await launch(whatsappUrl_ios, forceSafariVC:false);
-      }else{
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: new Text("Unable to launch whatsapp")));
-      }
-    }
-  }
+  // void _openWhatsApp(String phoneNumber) async{
+  //   String phone = '+91$phoneNumber';
+  //   var whatsappUrl_android = 'whatsapp://send?phone='+phone+"&text=I found you through exploro and i found that our intrest are same, so can we plan a trip together";
+  //   var whatsappUrl_ios = 'https://wa.me/phone?text=${Uri.parse("I found you through exploro and i found that our intrest are same, so can we plan a trip together")}';
+  //   if(Platform.isAndroid){
+  //
+  //         await launchUrl(Uri.parse(whatsappUrl_android));
+  //      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: new Text("Unable to launch whatsapp")));
+  //
+  //   }else{
+  //     if(await canLaunchUrl(Uri.parse(whatsappUrl_ios))){
+  //       await launch(whatsappUrl_ios, forceSafariVC:false);
+  //     }else{
+  //       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: new Text("Unable to launch whatsapp")));
+  //     }
+  //   }
+  // }
 
   Future<void> getUsers() async {
     try {
@@ -171,7 +171,16 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(onPressed: (){
             logout(context);
-          }, icon: Icon(Icons.logout, color: Colors.black,))
+          }, icon: Icon(Icons.logout, color: Colors.black,)),
+          IconButton(onPressed: (){
+            Navigator.of(context).push(
+              HorizontalSlideRoute(
+                builder: (_, __, ___) {
+                  return const MyProfile();
+                },
+              ),
+            );
+          }, icon: Icon(Icons.person_2_outlined, color: Colors.black,))
         ],
       ),
       body:
@@ -217,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                             child:
                             InkWell(
                               onTap: (){
-                                Navigator.of(context).pushReplacement(
+                                Navigator.of(context).push(
                                   HorizontalSlideRoute(
                                     builder: (_, __, ___) {
                                       return UserDetailsPage(user: userCards[index]!,);
@@ -245,7 +254,7 @@ class _HomePageState extends State<HomePage> {
                             child:
                             InkWell(
                               onTap: (){
-                                _openWhatsApp(userCards[index]!.phone);
+                                //_openWhatsApp(userCards[index]!.phone.trim());
                               },
                               child: Text(userCards[index]!.phone, style: TextStyle(
                                   color: Colors.black54,

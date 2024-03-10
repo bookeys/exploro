@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
         password: password,
       );
       User? user = userCredential?.user;
-      if (user != null && user.emailVerified) {
+      if (user != null) {
         DocumentSnapshot userData = await FirebaseFirestore.instance
             .collection('users')
             .doc(userCredential?.user?.uid)
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
 
         print('User logged in successfully! User ID: ${user.uid}');
       } else {
-        print('User email is not verified. Please verify your email.');
+        print('Something went wrong.');
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('User email is not verified. Please verify your email.', style: TextStyle(
               fontFamily: "ColaRegular"
