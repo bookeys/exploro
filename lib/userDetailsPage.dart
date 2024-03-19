@@ -22,8 +22,8 @@ class UserDetailsPage extends StatelessWidget {
 
   void _openWhatsApp(String phoneNumber) async{
     String phone = '+91$phoneNumber';
-    var whatsappUrl_android = 'whatsapp://send?phone='+phone+"&text=I found you through exploro and i found that our intrest are same, so can we plan a trip together";
-    var whatsappUrl_ios = 'https://wa.me/phone?text=${Uri.parse("I found you through exploro and i found that our intrest are same, so can we plan a trip together")}';
+    var whatsappUrl_android = 'whatsapp://send?phone='+phone+"&text=I found you through At Snap I have small work for you can we talk?";
+    var whatsappUrl_ios = 'https://wa.me/phone?text=${Uri.parse("I found you through At Snap I have small work for you can we talk?")}';
     if(Platform.isAndroid){
       if(Platform.isAndroid){
         await launchUrl(Uri.parse(whatsappUrl_android));
@@ -44,12 +44,10 @@ class UserDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     List<IconMenu> iconList = [
-      IconMenu(imageName: "images/mountains.jpeg", titleIcon: "Mountains"),
-      IconMenu(imageName: "images/snow.jpeg", titleIcon: "Snow"),
-      IconMenu(imageName: "images/desert.jpg", titleIcon: "Desert"),
-      IconMenu(imageName: "images/waterfall.jpeg", titleIcon: "Waterfall"),
-      IconMenu(imageName: "images/beach.jpeg", titleIcon: "Beach"),
-      IconMenu(imageName: "images/city.jpg", titleIcon: "City"),
+      IconMenu(imageName: "images/carpenter.jpg", titleIcon: "Carpenter"),
+      IconMenu(imageName: "images/plumber.jpg", titleIcon: "Plumber"),
+      IconMenu(imageName: "images/electrician.jpg", titleIcon: "Electrician"),
+      IconMenu(imageName: "images/mechanic.jpg", titleIcon: "Mechanic"),
     ];
 
     return Scaffold(
@@ -172,7 +170,7 @@ class UserDetailsPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("State they want to visit, now", style: TextStyle(
+                                    Text("Their State", style: TextStyle(
                                         fontFamily: "ColabRegular",
                                         fontSize: 15
                                     ),),
@@ -218,7 +216,7 @@ class UserDetailsPage extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Icon(MdiIcons.whatsapp,  size: 35, color: Colors.green,),
-                                        Text("I found you through exploro and I\nfound that our intrest are same,\nso can we plan a trip together ?",
+                                        Text("I found you through At Snap I\nhave small work for you,\ncan we talk?",
                                         maxLines: 4, style: TextStyle(fontSize: 13, fontFamily: "ColabRegular"),),
                                         Column(
                                           children: [
@@ -238,7 +236,7 @@ class UserDetailsPage extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            Text("Prefered Places", style: TextStyle(
+                            Text("Services they provide", style: TextStyle(
                                 fontFamily: "ColabBold",
                                 fontSize: 15
                             ),),
@@ -280,29 +278,7 @@ class UserDetailsPage extends StatelessWidget {
                                       //     child: Icon(Icons.check, color: Colors.green, size: 100,),),)
                                       //   ),
                                       // Text at bottom
-                                      Positioned(
-                                        bottom: 0,
-                                        left: 0,
-                                        right: 0,
-                                        child: Container(
-                                            color: Colors.black.withOpacity(0.5),
-                                            padding: EdgeInsets.all(8),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [Text(
-                                                user.selectedPlaces[index],
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: "ColabRegular",
-                                                  fontSize: 16,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
 
-                                              ],
-                                            )
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 );

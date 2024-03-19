@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
                 Text(
-                  "exploro",
+                  "At Snap",
                   style: TextStyle(
                       color: Colors.black,
                       fontFamily: "ColabMedium",

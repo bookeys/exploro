@@ -14,12 +14,10 @@ class IconMenu {
 }
 
 List<IconMenu> iconList = [
-  IconMenu(imageName: "images/mountains.jpeg", titleIcon: "Mountains"),
-  IconMenu(imageName: "images/snow.jpeg", titleIcon: "Snow"),
-  IconMenu(imageName: "images/desert.jpg", titleIcon: "Desert"),
-  IconMenu(imageName: "images/waterfall.jpeg", titleIcon: "Waterfall"),
-  IconMenu(imageName: "images/beach.jpeg", titleIcon: "Beach"),
-  IconMenu(imageName: "images/city.jpg", titleIcon: "City"),
+  IconMenu(imageName: "images/carpenter.jpg", titleIcon: "Carpenter"),
+  IconMenu(imageName: "images/plumber.jpg", titleIcon: "Plumber"),
+  IconMenu(imageName: "images/electrician.jpg", titleIcon: "Electrician"),
+  IconMenu(imageName: "images/mechanic.jpg", titleIcon: "Mechanic"),
 ];
 
 class PlaceSelectionPage extends StatefulWidget {
@@ -111,7 +109,7 @@ class _PlaceSelectionPageState extends State<PlaceSelectionPage> with TickerProv
               children: [
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Tell us your preferences", style: TextStyle(fontFamily: "ColabRegular", fontSize: 20),),
+                    Text("Tell us what service do you want....", style: TextStyle(fontFamily: "ColabRegular", fontSize: 20),),
 
                   ],
                 ),
@@ -131,7 +129,7 @@ class _PlaceSelectionPageState extends State<PlaceSelectionPage> with TickerProv
                     return InkWell(
                       onTap: () {
                         toggleSelection(index);
-                        if (!selectedItems[index] && !isAtLeastThreeSelected()) {
+                        if (!selectedItems[index]) {
                           toggleSelection(index);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -206,19 +204,12 @@ class _PlaceSelectionPageState extends State<PlaceSelectionPage> with TickerProv
       floatingActionButton: FloatingActionButton(
         backgroundColor:  Color(0xffFEBD2F),
         onPressed: () {
-          if (!isAtLeastThreeSelected()) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('At least three items must be selected.'),
-              ),
-            );
-          } else {
             List<String> selectedNames = [];
             for (int i = 0; i < selectedItems.length; i++) {
               if (selectedItems[i]) {
                 selectedNames.add(iconList[i].titleIcon);
               }
-            }
+
             addPreferences(selectedNames);
             print(selectedNames); // Output selected item names to console
           }

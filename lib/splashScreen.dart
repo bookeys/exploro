@@ -43,7 +43,7 @@ class CenteredText extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Center(
         child: Text(
-          "exploro",
+          "At Snap",
           style: TextStyle(
               color: Colors.white, fontSize: 36, fontFamily: "ColabBold"),
         ),

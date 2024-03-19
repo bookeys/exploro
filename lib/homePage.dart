@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('exploro', style: TextStyle(
+        title: Text('At Snap', style: TextStyle(
           color: Colors.black,
           fontFamily: "ColabBold"
         ),),

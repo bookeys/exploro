@@ -15,17 +15,17 @@ class _StartupPageViewState extends State<StartupPageView> {
   int activePage = 0;
   List<StartupCard> _startupCard = [
     StartupCard(
-        imageUrl: "images/human.png",
-        description: "Welcome to Exploro!"
-            "Embark on solo journeys, find travel companions, and create lasting memories together."),
+        imageUrl: "images/plumber.jpg",
+        description: "Welcome to At Snap!"
+            "Find services, and get your work done."),
     StartupCard(
-        imageUrl: "images/female.png",
+        imageUrl: "images/mechanic.jpg",
         description:
-            "Expand your horizons, collaborate on itineraries, and make every trip an opportunity to connect and create lifelong friendships."),
+            "Save time and money"),
     StartupCard(
-        imageUrl: "images/group.png",
+        imageUrl: "images/electrician.jpg",
         description:
-            "Enjoy your holiday! don’t forget to take a photo and share to the world"),
+            "Get started"),
   ];
 
   @override
