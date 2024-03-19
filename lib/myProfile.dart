@@ -48,12 +48,10 @@ class _MyProfileState extends State<MyProfile> {
 
 
   List<IconMenu> iconList = [
-    IconMenu(imageName: "images/mountains.jpeg", titleIcon: "Mountains"),
-    IconMenu(imageName: "images/snow.jpeg", titleIcon: "Snow"),
-    IconMenu(imageName: "images/desert.jpg", titleIcon: "Desert"),
-    IconMenu(imageName: "images/waterfall.jpeg", titleIcon: "Waterfall"),
-    IconMenu(imageName: "images/beach.jpeg", titleIcon: "Beach"),
-    IconMenu(imageName: "images/city.jpg", titleIcon: "City"),
+    IconMenu(imageName: "images/carpenter.jpg", titleIcon: "Carpenter"),
+    IconMenu(imageName: "images/plumber.jpg", titleIcon: "Plumber"),
+    IconMenu(imageName: "images/electrician.jpg", titleIcon: "Electrician"),
+    IconMenu(imageName: "images/mechanic.jpg", titleIcon: "Mechanic"),
   ];
 
 
@@ -184,7 +182,7 @@ class _MyProfileState extends State<MyProfile> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("State you want to visit, now", style: TextStyle(
+                                  Text("Your State", style: TextStyle(
                                       fontFamily: "ColabRegular",
                                       fontSize: 15
                                   ),),
@@ -205,7 +203,7 @@ class _MyProfileState extends State<MyProfile> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Text("Prefered Places", style: TextStyle(
+                          Text("Services you asked for", style: TextStyle(
                               fontFamily: "ColabBold",
                               fontSize: 15
                           ),),
@@ -252,29 +250,7 @@ class _MyProfileState extends State<MyProfile> {
                                       //     child: Icon(Icons.check, color: Colors.green, size: 100,),),)
                                       //   ),
                                       // Text at bottom
-                                      Positioned(
-                                        bottom: 0,
-                                        left: 0,
-                                        right: 0,
-                                        child: Container(
-                                            color: Colors.black.withOpacity(0.5),
-                                            padding: EdgeInsets.all(8),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [Text(
-                                                selectedPlaces![index],
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: "ColabRegular",
-                                                  fontSize: 16,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
 
-                                              ],
-                                            )
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 );

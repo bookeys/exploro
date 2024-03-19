@@ -109,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 10,
               ),
               Text(
-                "EXPLORO",
+                "At Snap",
                 style: TextStyle(
                     color: Colors.black,
                     fontFamily: "ColabBold",

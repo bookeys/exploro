@@ -101,7 +101,7 @@ class _StateSelectionState extends State<StateSelection> {
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 20),
-                  child: const Text("Select 1 state you would like to visit", style: TextStyle(fontFamily: "ColabRegular", fontSize: 18),),
+                  child: const Text("Which state do you live in ?", style: TextStyle(fontFamily: "ColabRegular", fontSize: 18),),
                 ),
                 const SizedBox(
                   height: 10,
